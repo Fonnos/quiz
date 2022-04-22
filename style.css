@@ -10,7 +10,9 @@
 
 .main-card {
     border: 0px !important;
-    border-radius: 5% !important;
+    border-radius: 7% !important;
+    width: 40rem;
+    
 }
 
 .card {
@@ -22,6 +24,28 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.hide {
+    display: none;
+}
+
+.p-16 {
+    padding: 16px !important;
+}
+
+.card-title {
+    text-align: center;
+}
+
+.all-center {
+    display: contents !important;
+    
+}
+
+#mainImg {
+    max-height: 350px;
+    object-fit: contain;
 }
 
 

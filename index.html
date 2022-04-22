@@ -23,44 +23,24 @@
   </nav>
 
   <div class="div-card">
-    <div class="card main-card" style="width: 30rem;">
-        <img src="img/quiz-time.png" class="card-img-top" alt="...">
+    <div class="card main-card">
+        <img id="mainImg" src="img/quiz-time.png" class="card-img-top" alt="...">
         <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <h5 id="title" class="card-title">Wähle eine Kategorie aus!</h5>
+      <p class="card-text" id="question"></p>
     </div>
-    <ul class="list-group list-group-flush">
+    <div id="mainContent" class="all-center">
         
-        <div class="card">
-            <div class="card-body">
-              Antwort
-            </div>
-          </div>
+        <button onclick="renderGeographie()" type="button" class="m-16 btn btn-secondary btn-lg">Geografie</button>
+        <button onclick="" type="button" class="m-16 btn btn-secondary btn-lg">nicht Definiert</button>
+        
 
-          <div class="card">
-            <div class="card-body">
-              Antwort
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="card-body">
-              Antwort
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="card-body">
-              Antwort
-            </div>
-          </div>
+        </div>
+          
 
           <div>
-              <div class="bot-side">
-                  <div>
-                      <b>1</b> von <b>5</b> Fragen
-                    </div>
-                    <button type="button" class="btn btn-secondary">nächste Frage</button>
+              <div id="cardFooter" class="bot-side">
+                  
               </div>
           </div>
 
