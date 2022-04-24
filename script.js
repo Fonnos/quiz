@@ -56,16 +56,45 @@ let questionsfederalStates = [
 currentQuestions = [];
 currentArray = 0;
 currentQuest = 1;
+buttonNext = "nächste Frage";
 
 
 
-
-
-
-
-function renderGeographie() {
+function renderMainMenu() {
+    let footer = document.getElementById("cardFooter");
     let image = document.getElementById("mainImg");
     let content = document.getElementById("mainContent");
+    let home = document.getElementById("home")
+    let headline = document.getElementById("headline");
+    home.classList.add(`hide`);
+    footer.innerHTML = ``;
+    headline.innerHTML = `Quizapp`;
+    image.classList.remove(`p-16`);
+    image.src = `
+    img/quiz-time.png
+    `;
+    title.innerHTML = `
+    Wähle eine Kategorie aus!
+    `;
+    content.innerHTML = `
+    <button onclick="renderGeographie()" type="button" class="m-16 btn btn-secondary btn-lg">Geografie</button>
+    <button onclick="" type="button" class="m-16 btn btn-secondary btn-lg">nicht Definiert</button>
+    `;
+
+}
+    
+function renderGeographie() {
+    let footer = document.getElementById("cardFooter");
+    let image = document.getElementById("mainImg");
+    let content = document.getElementById("mainContent");
+    let home = document.getElementById("home")
+    let headline = document.getElementById("headline");
+    footer.innerHTML = ``;
+    home.classList.remove(`hide`);
+    headline.innerHTML = `Geografie`;
+    home.onclick=function() {
+        renderMainMenu();
+    };
     image.classList.add(`p-16`);
     image.src = `
     img/geographie.png
@@ -84,11 +113,25 @@ function renderCurrentQuestions(array) {
     renderQuestions();
 }
 
+function resetCounter() {
+    currentQuestions = [];
+    currentArray = 0;
+    currentQuest = 1;
+    buttonNext = "nächste Frage";
+}
+
 function nextQuestion() {
     currentArray++;
     currentQuest++;
+    if (currentQuest > maxQuest) {
+        renderGeographie();
+        resetCounter();
+    }
+    if (currentQuest == maxQuest) {
+        buttonNext = "Quiz beenden";
+    }
     renderQuestions();
-}
+    }
 
 function checkAnswer(o) {
     console.log(o);
@@ -100,9 +143,12 @@ function renderQuestions() {
     let quest = document.getElementById("question");
     let content = document.getElementById("mainContent");
     let footer = document.getElementById("cardFooter");
-    
-    let maxQuest = currentQuestions.length;
+    let home = document.getElementById("home")
     let question = currentQuestions[currentArray];
+    let headline = document.getElementById("headline");
+    headline.innerHTML = question['title'];
+    maxQuest = currentQuestions.length;
+    
     image.src = `
         ${question['image']}
     `;
@@ -138,7 +184,7 @@ function renderQuestions() {
         <div>
             <b>${currentQuest}</b> von <b>${maxQuest}</b> Fragen
         </div>
-        <button onclick="nextQuestion()" class="btn btn-secondary">nächste Frage</button>
+        <button onclick="nextQuestion()" class="btn btn-secondary">${buttonNext}</button>
     `;
 }
 

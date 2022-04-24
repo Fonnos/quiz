@@ -53,5 +53,16 @@
     background-color: lightgray;
 }
 
+.home {
+    object-fit: contain;
+    max-height: 33.99px;
+}
+
+.home:hover {
+    cursor: pointer;
+}
+
+
+
 
 
