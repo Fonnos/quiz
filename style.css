@@ -48,5 +48,10 @@
     object-fit: contain;
 }
 
+.answer:hover {
+    cursor: pointer;
+    background-color: lightgray;
+}
+
 
 

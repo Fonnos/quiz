@@ -1,5 +1,9 @@
-let questionsFederalStates = [
+
+
+const questionsfederalStates = [
     {
+        "title": "Bundesländer",
+        "image": "img/federalStates.png",
         "question": "Wie viele Bundesländer hat Deutscchland?",
         "answer_1": "12",
         "answer_2": "14",
@@ -8,6 +12,8 @@ let questionsFederalStates = [
         "right_answer": "3",
     },
     {
+        "title": "Bundesländer",
+        "image": "img/federalStates.png",
         "question": "Welches Bundesland ist nach Fläche das größte?",
         "answer_1": "Baden-Württemberg",
         "answer_2": "Bayern",
@@ -16,6 +22,8 @@ let questionsFederalStates = [
         "right_answer": "2",
     },
     {
+        "title": "Bundesländer",
+        "image": "img/federalStates.png",
         "question": "Welches Bundesland zählt die größte Bevölkerung?",
         "answer_1": "Nordrhein-Westfalen",
         "answer_2": "Niedersachsen",
@@ -24,35 +32,39 @@ let questionsFederalStates = [
         "right_answer": "1",
     },
     {
+        "title": "Bundesländer",
+        "image": "img/federalStates.png",
         "question": "Welches Bundesland hat die höchste Arbeitslosenquote?",
         "answer_1": "Berlin",
         "answer_2": "Bremen",
         "answer_3": "Mecklenburg-Vorpommern",
         "answer_4": "Nordrhein-Westfalen",
-        "right_answer ":"2",
+        "right_answer": "2",
     },
     {
+        "title": "Bundesländer",
+        "image": "img/federalStates.png",
         "question": "Welches ist das jüngste der alten Bundesländern?",
         "answer_1": "Schleswig-Holstein",
         "answer_2": "Hessen",
         "answer_3": "Brandenburg",
         "answer_4": "Saarland",
-        "right_answer ":"4",
+        "right_answer": "4",
     },
 ];
 
 let i = 0;
 
 
-function nextQuestion() {
+function nextQuestion(z) {
     i++;
-    renderFederalStates();
+    renderQuestions(z);
 }
 
 
 
 function renderGeographie() {
-    let image = document.getElementById("mainImg")
+    let image = document.getElementById("mainImg");
     let title = document.getElementById("title");
     let content = document.getElementById("mainContent");
     image.classList.add(`p-16`);
@@ -64,55 +76,55 @@ function renderGeographie() {
     title.innerHTML = `
     Wähle ein Thema aus!
     `;
-    
+
     content.innerHTML = `
-    <button onclick="renderFederalStates()" type="button" class="m-16 btn btn-secondary btn-lg">Bundesländer</button>
+    <button onclick="renderQuestions(questionsfederalStates)" type="button" class="m-16 btn btn-secondary btn-lg">Bundesländer</button>
     `;
 }
 
-function renderFederalStates() {
-    let image = document.getElementById("mainImg")
+function renderQuestions(arrey) {
+    let image = document.getElementById("mainImg");
     let title = document.getElementById("title");
     let quest = document.getElementById("question");
     let content = document.getElementById("mainContent");
     let footer = document.getElementById("cardFooter");
-    let maxQuest = questionsFederalStates.length;
-    let question = questionsFederalStates[i];
+    let maxQuest = arrey.length;
+    let question = arrey[i];
     let currentQuest = i + 1;
-    
+
 
     image.src = `
-    img/federalStates.png
+    ${question['image']}
     `;
 
     title.innerHTML = `
-    Bundesländer
+    ${question['title']}
     `;
 
     quest.innerHTML = `
     ${question['question']}
     `;
-    
+
     content.innerHTML = `
-    <div class="card">
+    <div class="card answer" onclick="checkAnswer(answer_1)">
         <div class="card-body">
             ${question['answer_1']}
         </div>
     </div>
 
-    <div class="card">
+    <div class="card answer" onclick="checkAnswer(answer_2)">
         <div class="card-body">
             ${question['answer_2']}
         </div>
     </div>
 
-    <div class="card">
+    <div class="card answer" onclick="checkAnswer(answer_3)">
         <div class="card-body">
             ${question['answer_3']}
         </div>
     </div>
 
-    <div class="card">
+    <div class="card answer" onclick="checkAnswer(answer_4)">
         <div class="card-body">
             ${question['answer_4']}
         </div>
@@ -123,8 +135,8 @@ function renderFederalStates() {
     <div>
         <b>${currentQuest}</b> von <b>${maxQuest}</b> Fragen
     </div>
-    <button onclick="nextQuestion()" type="button" class="btn btn-secondary">nächste Frage</button>
+    <button onclick="nextQuestion(${arrey})" type="button" class="btn btn-secondary">nächste Frage</button>
     `;
 
-    
+
 }
