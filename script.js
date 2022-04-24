@@ -1,6 +1,6 @@
 
 
-const questionsfederalStates = [
+let questionsfederalStates = [
     {
         "title": "Bundesländer",
         "image": "img/federalStates.png",
@@ -53,90 +53,92 @@ const questionsfederalStates = [
     },
 ];
 
-let i = 0;
+currentQuestions = [];
+currentArray = 0;
+currentQuest = 1;
 
 
-function nextQuestion(z) {
-    i++;
-    renderQuestions(z);
-}
+
+
 
 
 
 function renderGeographie() {
     let image = document.getElementById("mainImg");
-    let title = document.getElementById("title");
     let content = document.getElementById("mainContent");
     image.classList.add(`p-16`);
-
     image.src = `
     img/geographie.png
     `;
-
     title.innerHTML = `
     Wähle ein Thema aus!
     `;
-
     content.innerHTML = `
-    <button onclick="renderQuestions(questionsfederalStates)" type="button" class="m-16 btn btn-secondary btn-lg">Bundesländer</button>
+    <button onclick="renderCurrentQuestions(questionsfederalStates)" type="button" class="m-16 btn btn-secondary btn-lg">Bundesländer</button>
+    <button onclick="renderQuestions(questionstest)" type="button" class="m-16 btn btn-secondary btn-lg">test</button>
     `;
 }
 
-function renderQuestions(arrey) {
-    let image = document.getElementById("mainImg");
+function renderCurrentQuestions(array) {
+    currentQuestions = array;
+    renderQuestions();
+}
+
+function nextQuestion() {
+    currentArray++;
+    currentQuest++;
+    renderQuestions();
+}
+
+function checkAnswer(o) {
+    console.log(o);
+}
+
+function renderQuestions() {
     let title = document.getElementById("title");
+    let image = document.getElementById("mainImg");
     let quest = document.getElementById("question");
     let content = document.getElementById("mainContent");
     let footer = document.getElementById("cardFooter");
-    let maxQuest = arrey.length;
-    let question = arrey[i];
-    let currentQuest = i + 1;
-
-
+    
+    let maxQuest = currentQuestions.length;
+    let question = currentQuestions[currentArray];
     image.src = `
-    ${question['image']}
+        ${question['image']}
     `;
-
     title.innerHTML = `
-    ${question['title']}
+        ${question['title']}
     `;
-
     quest.innerHTML = `
-    ${question['question']}
+        ${question['question']}
     `;
-
     content.innerHTML = `
-    <div class="card answer" onclick="checkAnswer(answer_1)">
-        <div class="card-body">
-            ${question['answer_1']}
+        <div class="card answer" onclick="checkAnswer(1)">
+            <div class="card-body">
+                ${question['answer_1']}
+            </div>
         </div>
-    </div>
-
-    <div class="card answer" onclick="checkAnswer(answer_2)">
-        <div class="card-body">
-            ${question['answer_2']}
+        <div class="card answer" onclick="checkAnswer(2)">
+            <div class="card-body">
+                ${question['answer_2']}
+            </div>
         </div>
-    </div>
-
-    <div class="card answer" onclick="checkAnswer(answer_3)">
-        <div class="card-body">
-            ${question['answer_3']}
+        <div class="card answer" onclick="checkAnswer(3)">
+            <div class="card-body">
+                ${question['answer_3']}
+            </div>
         </div>
-    </div>
-
-    <div class="card answer" onclick="checkAnswer(answer_4)">
-        <div class="card-body">
-            ${question['answer_4']}
+        <div class="card answer" onclick="checkAnswer(4)">
+            <div class="card-body">
+                ${question['answer_4']}
+            </div>
         </div>
-    </div>
     `;
-
     footer.innerHTML = `
-    <div>
-        <b>${currentQuest}</b> von <b>${maxQuest}</b> Fragen
-    </div>
-    <button onclick="nextQuestion(${arrey})" type="button" class="btn btn-secondary">nächste Frage</button>
+        <div>
+            <b>${currentQuest}</b> von <b>${maxQuest}</b> Fragen
+        </div>
+        <button onclick="nextQuestion()" class="btn btn-secondary">nächste Frage</button>
     `;
-
-
 }
+
