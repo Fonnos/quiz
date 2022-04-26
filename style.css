@@ -27,11 +27,15 @@
 }
 
 .hide {
-    display: none;
+    display: none !important;
 }
 
 .p-16 {
     padding: 16px !important;
+}
+
+.m-16 {
+    margin: 8px;
 }
 
 .card-title {
@@ -62,6 +66,13 @@
     cursor: pointer;
 }
 
+.bg-success {
+    color: white;
+}
+
+.bg-danger {
+    color:white;
+}
 
 
 

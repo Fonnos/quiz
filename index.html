@@ -18,22 +18,27 @@
 <body>
    <nav class="navbar navbar-light bg-light">
     <div class="container-fluid">
-      <img onclick="" id="home" class="home hide" src="img/home.png">
-      <span id="headline" class="navbar-brand mb-0 h1">Quizapp</span>
+      <div>
+        <img onclick="" id="home" class="home hide" src="img/home.png">
+      </div>
+        <span id="headline" class="navbar-brand mb-0 h1">Quizapp</span>
     </div>
   </nav>
 
   <div class="div-card">
     <div class="card main-card">
         <img id="mainImg" src="img/quiz-time.png" class="card-img-top" alt="...">
+        <div class="progress">
+          <div id="progress-bar" class="hide progress-bar" role="progressbar" style="width:;" aria-valuemax="100">0%</div>
+        </div>
         <div class="card-body">
             <h5 id="title" class="card-title">Wähle eine Kategorie aus!</h5>
-      <p class="card-text" id="question"></p>
+      <p class="card-text" id="explain"></p>
     </div>
     <div id="mainContent" class="all-center">
         
         <button onclick="renderGeographie()" type="button" class="m-16 btn btn-secondary btn-lg">Geografie</button>
-        <button onclick="" type="button" class="m-16 btn btn-secondary btn-lg">nicht Definiert</button>
+        <button onclick="renderFantasy()" type="button" class="m-16 btn btn-secondary btn-lg">Fantasy</button>
         
 
         </div>
